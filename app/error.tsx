@@ -1,6 +1,6 @@
 'use client'
 
-import ServerError from '@/pages/500'
+import ServerError from '@/pagess/500'
 
 export default function Error({
   error,

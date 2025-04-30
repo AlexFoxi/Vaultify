@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import Home from '@/components/HomePage'
 
-import { DEFAULT_LANG } from '@/middleware'
+import { DEFAULT_LANG } from '../../middleware'
 
 const LANGUAGES = [DEFAULT_LANG, 'ua']
 
