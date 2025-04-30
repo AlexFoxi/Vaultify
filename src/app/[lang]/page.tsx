@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation'
 
-import Lang from '@/components/HomePage'
+import Home from '@/components/HomePage'
 
-const languages = ['ua', 'en']
+import { DEFAULT_LANG } from '@/middleware'
+
+const LANGUAGES = [DEFAULT_LANG, 'ua']
 
 interface Props {
   params: { lang: string }
@@ -10,16 +12,16 @@ interface Props {
 
 export default async function Page({ params }: Props) {
   const { lang } = await params
-  console.log(lang)
+  // console.log(lang)
 
-  if (!languages.includes(lang)) {
+  if (!LANGUAGES.includes(lang)) {
     return notFound()
   }
 
   return (
     <main className='flex min-h-screen items-center justify-center'>
       <h1 className='text-3xl font-bold'>Language: {lang?.toUpperCase()}</h1>
-      <Lang />
+      <Home />
     </main>
   )
 }
