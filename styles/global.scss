@@ -1,0 +1,45 @@
+@use 'vars' as *;
+@use 'null';
+
+:root {
+  color-scheme: light dark;
+  color: $white;
+  background-color: $dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  // background: $dark;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100dvh;
+
+  > div {
+    height: 100vh;
+    max-width: 132rem;
+    margin: 0 auto;
+    padding: 0 $XS;
+  }
+}
+
+p,
+span {
+  line-height: 1.25;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: $dark;
+    background-color: $white;
+  }
+}

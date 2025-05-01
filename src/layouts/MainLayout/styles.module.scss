@@ -34,36 +34,3 @@
     row-gap: 2rem;
   }
 }
-
-.menu_wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 80%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  z-index: 4;
-  background: var(--colors-white);
-  height: 100dvh;
-  overflow-y: auto;
-  transition: 0.2s linear;
-  transform: translateX(-100%);
-  &.active {
-    transform: none;
-  }
-  .sidebar-navigation {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem;
-    border-top: 1px solid #c7cdda;
-    border-bottom: 1px solid #c7cdda;
-    li {
-      margin: 0;
-      &:not(:last-child) {
-        margin-bottom: 3rem;
-      }
-    }
-  }
-}

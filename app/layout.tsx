@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { headers } from 'next/headers'
 
-import './globals.css'
+import '@/styles/global.scss'
 
 const projectInfo = {
   favicon: '/favicon.ico',

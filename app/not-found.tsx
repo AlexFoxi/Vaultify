@@ -1,4 +1,4 @@
-import NotFound from '@/pagess/404'
+import NotFound from '@/screens/404'
 
 export const meta = {
   robots: {

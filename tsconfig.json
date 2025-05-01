@@ -21,12 +21,16 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@enums/*": ["./src/enums/*"],
-      "@comp/*": ["./src/components/*"]
+      "@/components*": ["src/components/*"],
+      "@/styles": ["styles/*"],
+      "@/assets*": ["src/assets/*"],
+      "@/layouts*": ["src/layouts/*"],
+      "@/ui*": ["src/components/ui/*"],
+      "@/screens*": ["src/screens/*"],
+      "@/helpers*": ["src/helpers/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
