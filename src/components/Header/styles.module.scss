@@ -1,0 +1,43 @@
+@use '@/styles/vars' as *;
+
+.header {
+  width: 100%;
+  padding: 0.5rem;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 10px
+    color-mix(in srgb, var(--secondary-color), transparent 70%);
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $XS;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: $XS;
+  height: 100%;
+}
+
+.navItem {
+  font-size: 1.6rem;
+  color: var(--secondary-color);
+  padding: $XS2;
+
+  span {
+    display: block;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    span {
+      transform: translateY(-5px);
+    }
+  }
+}

@@ -27,9 +27,10 @@
       "@/styles/": ["styles/*"],
       "@/assets/*": ["src/assets/*"],
       "@/layouts/*": ["src/layouts/*"],
-      "@/ui/*": ["src/components/ui/*"],
       "@/screens/*": ["src/screens/*"],
       "@/helpers/*": ["src/helpers/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/ui/*": ["src/components/ui/*"],
       "@/*": ["src/*"]
     }
   },

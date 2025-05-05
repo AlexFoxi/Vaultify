@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       '@/layouts': 'src/layouts',
       '@/screens': 'src/screens',
       '@/helpers': 'src/helpers',
+      '@/hooks': 'src/hooks',
       '@/ui': 'src/components/ui',
       '@/*': './*'
     },

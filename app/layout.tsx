@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ThemeProvider } from 'next-themes'
 import { Montserrat } from 'next/font/google'
 import { headers } from 'next/headers'
 
@@ -25,11 +26,13 @@ export default async function RootLayout({
   const lang = (await headers()).get('X-Locale') ?? 'Uk'
 
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <link rel='icon' href={projectInfo.favicon} />
       </head>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   )
 }

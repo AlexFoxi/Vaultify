@@ -2,18 +2,31 @@
 @use 'null';
 
 :root {
+  --main-color: #{$dark};
+  --secondary-color: #{$white};
+  color: var(--secondary-color);
+  background-color: var(--main-color);
+
   color-scheme: light dark;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 html {
   font-size: 10px;
   line-height: 1.2;
   letter-spacing: 0.1px;
+
+  &[data-theme='light'] {
+    --main-color: #{$white};
+    --secondary-color: #{$dark};
+  }
 }
 
 body {
@@ -33,16 +46,16 @@ span {
   line-height: 1.25;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: $white;
-    background-color: $dark;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     color: var(--bg-color);
+//     background-color: var(--text-color);
+//   }
+// }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: $dark;
-    background-color: $white;
-  }
-}
+// @media (prefers-color-scheme: light) {
+//   :root {
+//     color: var(--bg-color);
+//     background-color: var(--text-color);
+//   }
+// }
