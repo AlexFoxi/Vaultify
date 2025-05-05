@@ -23,13 +23,13 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/components*": ["src/components/*"],
-      "@/styles": ["styles/*"],
-      "@/assets*": ["src/assets/*"],
-      "@/layouts*": ["src/layouts/*"],
-      "@/ui*": ["src/components/ui/*"],
-      "@/screens*": ["src/screens/*"],
-      "@/helpers*": ["src/helpers/*"],
+      "@/components/*": ["src/components/*"],
+      "@/styles/": ["styles/*"],
+      "@/assets/*": ["src/assets/*"],
+      "@/layouts/*": ["src/layouts/*"],
+      "@/ui/*": ["src/components/ui/*"],
+      "@/screens/*": ["src/screens/*"],
+      "@/helpers/*": ["src/helpers/*"],
       "@/*": ["src/*"]
     }
   },

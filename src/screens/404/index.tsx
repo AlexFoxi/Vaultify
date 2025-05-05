@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 
 export default function NotFound() {
@@ -8,10 +9,6 @@ export default function NotFound() {
   const currentLang = (params?.['not-found'] as string)?.[0]
 
   console.log(params)
-
-  // const handleNavigateToHomePage = () => {
-  //   router.push(`/${currentLang === 'en' || !currentLang ? '' : currentLang}`)
-  // }
 
   return (
     <>
@@ -61,13 +58,13 @@ export default function NotFound() {
             outline: 'none'
           }}
         >
-          <a
+          <Link
             href={`/${currentLang === 'en' || !currentLang ? '' : currentLang}`}
             style={{ color: '#fff' }}
           >
             navigate
             {/* {t('error.toMainPage')} */}
-          </a>
+          </Link>
           {/* <Button
             rounded
             // title={t('error.toMainPage')}

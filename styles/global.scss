@@ -3,8 +3,6 @@
 
 :root {
   color-scheme: light dark;
-  color: $white;
-  background-color: $dark;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,7 +14,6 @@ html {
   font-size: 10px;
   line-height: 1.2;
   letter-spacing: 0.1px;
-  // background: $dark;
 }
 
 body {
@@ -24,8 +21,7 @@ body {
   overflow-y: scroll;
   min-height: 100dvh;
 
-  > div {
-    height: 100vh;
+  .container {
     max-width: 132rem;
     margin: 0 auto;
     padding: 0 $XS;
@@ -35,6 +31,13 @@ body {
 p,
 span {
   line-height: 1.25;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: $white;
+    background-color: $dark;
+  }
 }
 
 @media (prefers-color-scheme: light) {

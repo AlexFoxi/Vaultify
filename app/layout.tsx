@@ -2,17 +2,8 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { headers } from 'next/headers'
 
+import { projectInfo } from '@/helpers/projectInfo'
 import '@/styles/global.scss'
-
-const projectInfo = {
-  favicon: '/favicon.ico',
-  logo: {
-    width: 120,
-    height: 45,
-    alt: 'Vaultify',
-    path: '/logo.svg'
-  }
-}
 
 export const montserrat = Montserrat({
   subsets: ['latin'],
