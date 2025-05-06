@@ -1,0 +1,49 @@
+@use '@/styles/vars' as *;
+
+.searchBox {
+  position: relative;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $XS2;
+  border: 1px solid var(--secondary-color);
+  border-radius: $XS2;
+  width: 22rem;
+  height: 3rem;
+  z-index: 2;
+
+  > div {
+    &:nth-of-type(1) {
+      width: 40%;
+      z-index: 2;
+    }
+    &:nth-of-type(2) {
+      width: 60%;
+    }
+  }
+}
+
+.searchRes {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  width: 100%;
+  padding: $XS2;
+  border: 1px solid var(--secondary-color);
+  border-radius: $XS2;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  row-gap: $XS2;
+  z-index: 1;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+}

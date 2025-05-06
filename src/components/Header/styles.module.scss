@@ -2,8 +2,8 @@
 
 .header {
   width: 100%;
-  padding: 0.5rem;
-  height: 5rem;
+  padding: $XS 0;
+  height: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@
 }
 
 .navItem {
-  font-size: 1.6rem;
+  font-size: $TextG;
   color: var(--secondary-color);
   padding: $XS2;
 

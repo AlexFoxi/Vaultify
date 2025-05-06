@@ -6,7 +6,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import Theme from './Theme'
+import Theme from '@/ui/Theme'
+
+import Search from './Search'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
@@ -14,8 +16,6 @@ export default function Header() {
   const pathname = usePathname()
   const lang = pathname.split('/')[1] || 'en'
   const logo = projectInfo.logo
-
-  console.log(lang)
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/' || pathname === '/ua') {
@@ -52,6 +52,7 @@ export default function Header() {
           </Link>
         </div>
         <div className={styles.search}></div>
+        <Search />
         <Theme />
         <div className={styles.lang}></div>
         <div className={styles.user}></div>

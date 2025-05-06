@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   turbopack: {
-    root: '.',
     resolveAlias: {
       '@/components': 'src/components',
       '@/styles': 'styles',

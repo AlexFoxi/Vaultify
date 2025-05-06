@@ -4,7 +4,9 @@
 :root {
   --main-color: #{$dark};
   --secondary-color: #{$white};
-  color: var(--secondary-color);
+  --gray-color: #{$gray};
+
+  color: var(--gray-color);
   background-color: var(--main-color);
 
   color-scheme: light dark;
