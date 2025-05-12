@@ -1,37 +1,41 @@
+import { routing } from 'i18n/routing'
 import type { Metadata } from 'next'
+import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
-import { Montserrat } from 'next/font/google'
-import { headers } from 'next/headers'
 
+import { montserrat } from './font'
 import { projectInfo } from '@/helpers/projectInfo'
 import '@/styles/global.scss'
-
-export const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  display: 'swap'
-})
 
 export const metadata: Metadata = {
   title: 'Vaultify App',
   description: 'App for story data'
 }
 
+export const generateStaticParams = () => {
+  return routing.locales.map(locale => ({
+    locale
+  }))
+}
+
 export default async function RootLayout({
-  children
-}: Readonly<{
+  children,
+  params
+}: {
   children: React.ReactNode
-}>) {
-  const lang = (await headers()).get('X-Locale') ?? 'Uk'
+  params: Promise<{ locale: string }>
+}) {
+  const locale = await Promise.resolve((await params).locale)
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel='icon' href={projectInfo.favicon} />
       </head>
       <body className={montserrat.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

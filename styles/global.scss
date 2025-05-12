@@ -28,6 +28,7 @@ html {
   &[data-theme='light'] {
     --main-color: #{$white};
     --secondary-color: #{$dark};
+    --gray-color: #{$gray-dark};
   }
 }
 
@@ -47,17 +48,3 @@ p,
 span {
   line-height: 1.25;
 }
-
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     color: var(--bg-color);
-//     background-color: var(--text-color);
-//   }
-// }
-
-// @media (prefers-color-scheme: light) {
-//   :root {
-//     color: var(--bg-color);
-//     background-color: var(--text-color);
-//   }
-// }

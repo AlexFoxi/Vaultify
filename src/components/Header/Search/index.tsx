@@ -27,7 +27,7 @@ const CategoryData: Options[] = [
   { id: 3, name: 'anime' }
 ]
 
-export default function Search() {
+const Search = () => {
   const [category, setCategory] = useState<Category>(null)
   const [search, setSearch] = useState<string>('')
   const [debouncedSearch, setDebouncedSearch] = useState<string>('')
@@ -51,13 +51,13 @@ export default function Search() {
 
   useEffect(() => {
     const handleSearch = ({ category, search }: Search) => {
-      console.log(`Category: ${category}, Search Query: ${search}`)
+      // console.log(`Category: ${category}, Search Query: ${search}`)
       if (category && search) {
         setSearchResults([
           `${category} result 1 for "${search}"`,
           `${category} result 2 for "${search}"`,
           `${category} result 3 for "${search}"`
-        ]) // Це можуть бути реальні дані з API
+        ])
       } else {
         setSearchResults([])
       }
@@ -103,3 +103,5 @@ export default function Search() {
     </div>
   )
 }
+
+export default Search

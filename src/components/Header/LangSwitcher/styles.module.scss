@@ -1,0 +1,38 @@
+@use './styles/vars' as *;
+
+.LangBox {
+  position: relative;
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.activeLang {
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.4rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.4rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.lang {
+  padding: 0.4rem;
+  cursor: pointer;
+
+  &.selected {
+    display: none;
+  }
+}

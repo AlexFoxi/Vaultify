@@ -8,8 +8,6 @@ export default function NotFound() {
   const params = useParams()
   const currentLang = (params?.['not-found'] as string)?.[0]
 
-  console.log(params)
-
   return (
     <>
       <div

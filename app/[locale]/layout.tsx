@@ -2,7 +2,7 @@ import MainLayout from '@/layouts/MainLayout'
 
 type Props = {
   children: React.ReactNode
-  params: { id: string; lang: string }
+  params: { locale: string }
 }
 
 export default async function Layout({ children, params }: Props) {

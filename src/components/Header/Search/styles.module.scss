@@ -1,7 +1,12 @@
-@use '@/styles/vars' as *;
+@use './styles/vars' as *;
 
 .searchBox {
   position: relative;
+  &.showed {
+    .search {
+      border-radius: $XS2 $XS2 0 0;
+    }
+  }
 }
 
 .search {
@@ -14,6 +19,7 @@
   width: 22rem;
   height: 3rem;
   z-index: 2;
+  transition: border-radius 0.3s ease;
 
   > div {
     &:nth-of-type(1) {
@@ -33,7 +39,7 @@
   width: 100%;
   padding: $XS2;
   border: 1px solid var(--secondary-color);
-  border-radius: $XS2;
+  border-radius: 0 0 $XS2 $XS2;
   visibility: hidden;
   opacity: 0;
   background: var(--main-color);
@@ -41,9 +47,16 @@
   flex-direction: column;
   row-gap: $XS2;
   z-index: 1;
+  transition: all 0.3s ease;
 
   &.show {
     visibility: visible;
     opacity: 1;
   }
+}
+
+.noResults {
+  font-size: $TextG;
+  font-weight: 500;
+  text-align: center;
 }

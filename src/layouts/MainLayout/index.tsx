@@ -7,7 +7,7 @@ import styles from './styles.module.scss'
 
 type Props = {
   children: React.ReactNode
-  params: { id: string; lang: string }
+  params: { locale: string }
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,6 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function MainLayoutLM({ children, params }: Props) {
+  // const { lang } = await params
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>

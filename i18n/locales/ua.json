@@ -1,0 +1,11 @@
+{
+  "welcome": "Привіт",
+  "change_language": "Змінити мову",
+  "header": {
+    "search": "Пошук"
+  },
+  "LanguageSwitcher": {
+    "english": "En",
+    "ukrainian": "Ua"
+  }
+}

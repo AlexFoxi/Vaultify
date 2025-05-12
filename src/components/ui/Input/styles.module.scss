@@ -1,4 +1,4 @@
-@use '@/styles/vars' as *;
+@use './styles/vars' as *;
 
 .inputBox {
   max-width: 15rem;
@@ -28,6 +28,7 @@
 
   span {
     font-size: $TextS;
+
     line-height: 1;
   }
 }
@@ -38,6 +39,7 @@
 
   &::placeholder {
     font-size: $TextS;
+    font-weight: 500;
     line-height: 1;
     color: rgba(var(--gray-color), 0.7);
   }

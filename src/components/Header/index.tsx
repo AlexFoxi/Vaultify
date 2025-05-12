@@ -1,24 +1,25 @@
 'use client'
 
 import cn from 'clsx'
-import { DEFAULT_LANG } from 'middleware'
+import { Link, usePathname } from 'i18n/navigation'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
+import NavigationLink from '@/ui/NavLink'
 import Theme from '@/ui/Theme'
 
+import LangSwitcher from './LangSwitcher'
 import Search from './Search'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
 export default function Header() {
   const pathname = usePathname()
-  const lang = pathname.split('/')[1] || 'en'
+  const locale = useLocale()
   const logo = projectInfo.logo
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === '/' || pathname === '/ua') {
+    if (pathname === '/en' || pathname === '/ua') {
       e.preventDefault()
     }
   }
@@ -28,9 +29,10 @@ export default function Header() {
       <div className={cn('container', styles.navBar)}>
         <div className={styles.logo}>
           <Link
-            href={`${pathname === DEFAULT_LANG ? '' : pathname}`}
+            href={pathname}
             onClick={handleLogoClick}
             title='Logo'
+            locale={locale}
           >
             <Image
               src={logo.path}
@@ -41,20 +43,31 @@ export default function Header() {
           </Link>
         </div>
         <div className={styles.nav}>
-          <Link href={`/${lang}/books`} className={styles.navItem}>
+          <NavigationLink
+            href={`/books`}
+            className={styles.navItem}
+            locale={locale}
+          >
             <span>Books</span>
-          </Link>
-          <Link href={`/${lang}/films`} className={styles.navItem}>
+          </NavigationLink>
+          <NavigationLink
+            href={`/films`}
+            className={styles.navItem}
+            locale={locale}
+          >
             <span>Films</span>
-          </Link>
-          <Link href={`/${lang}/anime`} className={styles.navItem}>
+          </NavigationLink>
+          <NavigationLink
+            href={`/anime`}
+            className={styles.navItem}
+            locale={locale}
+          >
             <span>Anime</span>
-          </Link>
+          </NavigationLink>
         </div>
-        <div className={styles.search}></div>
         <Search />
         <Theme />
-        <div className={styles.lang}></div>
+        <LangSwitcher />
         <div className={styles.user}></div>
       </div>
     </div>

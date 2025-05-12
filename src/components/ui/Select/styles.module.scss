@@ -1,4 +1,4 @@
-@use '@/styles/vars' as *;
+@use './styles/vars' as *;
 
 .selectBox {
   max-width: 15rem;
@@ -30,6 +30,7 @@
 
   span {
     font-size: $TextS;
+    font-weight: 500;
     line-height: 1;
 
     &.placeholder {
@@ -66,6 +67,7 @@
     display: block;
     transition: all 0.3s ease;
   }
+
   &.selected {
     font-weight: 600;
     opacity: 0.4;

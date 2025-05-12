@@ -1,0 +1,11 @@
+{
+  "welcome": "Hello",
+  "change_language": "Change language",
+  "header": {
+    "search": "Search"
+  },
+  "LanguageSwitcher": {
+    "english": "En",
+    "ukrainian": "Ua"
+  }
+}

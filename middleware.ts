@@ -1,22 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 
-export const DEFAULT_LANG = 'en'
+import { routing } from './i18n/routing'
 
-const CLOSED_LINKS = ['/en']
+export default createMiddleware(routing)
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  const url = request.nextUrl.clone()
-
-  if (CLOSED_LINKS.includes(pathname)) {
-    url.pathname = `/`
-    return NextResponse.redirect(url)
-  }
-
-  if (pathname === '/') {
-    url.pathname = `/${DEFAULT_LANG}`
-    return NextResponse.rewrite(url)
-  }
-
-  return NextResponse.next()
+export const config = {
+  // Match all pathnames except for
+  // - if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+  // - the ones containing a dot (e.g. `favicon.ico`)
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 }
