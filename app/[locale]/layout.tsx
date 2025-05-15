@@ -6,5 +6,10 @@ type Props = {
 }
 
 export default async function Layout({ children, params }: Props) {
-  return <MainLayout params={params}>{children}</MainLayout>
+  return (
+    <MainLayout params={params}>
+      {children}
+      <div id='portal-root'></div>
+    </MainLayout>
+  )
 }
