@@ -6,10 +6,11 @@ import { useLocale } from 'next-intl'
 import Image from 'next/image'
 
 import NavigationLink from '@/ui/NavLink'
-import Theme from '@/ui/Theme'
 
 import LangSwitcher from './LangSwitcher'
 import Search from './Search'
+import Theme from './Theme'
+import User from './User'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
@@ -68,7 +69,7 @@ export default function Header() {
         <Search />
         <Theme />
         <LangSwitcher />
-        <div className={styles.user}></div>
+        <User />
       </div>
     </div>
   )

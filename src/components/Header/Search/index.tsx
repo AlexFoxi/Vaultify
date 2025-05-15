@@ -78,7 +78,7 @@ const Search = () => {
         />
         <Input
           type='text'
-          value={search}
+          defaultValue={search}
           onChange={handleInput}
           placeholder='Search'
           variant='none'

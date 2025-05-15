@@ -14,6 +14,7 @@ const LangSwitcher = () => {
   const currentLocale = pathname.startsWith('/ua') ? 'ua' : DefaultLocale
   const [open, setOpen] = useState(false)
   const langBoxRef = useRef<HTMLDivElement | null>(null)
+  useClickOutside(langBoxRef, () => setOpen(false))
 
   const handleLanguageShow = () => {
     setOpen(!open)
@@ -25,8 +26,6 @@ const LangSwitcher = () => {
 
     setOpen(false)
   }
-
-  useClickOutside(langBoxRef, () => setOpen(false))
 
   return (
     <div className={styles.LangBox} ref={langBoxRef}>
