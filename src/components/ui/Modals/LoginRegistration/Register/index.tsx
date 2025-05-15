@@ -3,6 +3,7 @@ import UserIco from 'assets/icons/UserIco'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
 import styles from './styles.module.scss'
@@ -48,7 +49,7 @@ const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
   }, [])
 
   return (
-    <div>
+    <>
       <form className={styles.form}>
         <Input
           {...formRegistration('email', {
@@ -100,19 +101,16 @@ const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
           />
         </div>
       </form>
+
       <div className={styles.buttons}>
-        <button
-          className={styles.loginBtn}
-          type='submit'
-          onClick={handleSubmit(onSubmit)}
-        >
+        <Button variant='bordered' onClick={handleSubmit(onSubmit)}>
           Register
-        </button>
-        <button onClick={hideRegistration} className={styles.registration}>
+        </Button>
+        <Button variant='bordered' onClick={hideRegistration}>
           Back to Login
-        </button>
+        </Button>
       </div>
-    </div>
+    </>
   )
 }
 
