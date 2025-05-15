@@ -11,13 +11,12 @@
 
 .search {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: $XS2;
   border: 1px solid var(--secondary-color);
   border-radius: $XS2;
   width: 22rem;
-  height: 3rem;
   z-index: 2;
   transition: border-radius 0.3s ease;
 
@@ -25,6 +24,7 @@
     &:nth-of-type(1) {
       width: 40%;
       z-index: 2;
+      height: auto;
     }
     &:nth-of-type(2) {
       width: 60%;
