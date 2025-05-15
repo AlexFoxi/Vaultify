@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react'
 
 import styles from './styles.module.scss'
 
-export default function Theme() {
+const Theme = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  const toggleTheme = () => {
+  const handleToggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
@@ -18,19 +18,18 @@ export default function Theme() {
     setMounted(true)
   }, [])
 
-  if (!mounted) {
-    return <div className={styles.theme}> </div>
-  }
-
   return (
     <div className={styles.theme}>
-      <button
-        onClick={toggleTheme}
-        className={cn(styles.toggler, theme === 'light' ? styles.light : '')}
-        aria-label='Toggle Theme'
-      >
-        <div className={styles.dot}></div>
-      </button>
+      {mounted && (
+        <button
+          onClick={handleToggleTheme}
+          className={cn(styles.toggler, theme === 'light' ? styles.light : '')}
+          aria-label='Toggle Theme'
+        >
+          <div className={styles.dot}></div>
+        </button>
+      )}
     </div>
   )
 }
+export default Theme
