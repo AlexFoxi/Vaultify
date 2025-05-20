@@ -1,8 +1,11 @@
 {
-  "welcome": "Hello",
-  "change_language": "Change language",
   "header": {
-    "search": "Search"
+    "search": "Search",
+    "category": "Category",
+    "books": "Books",
+    "films": "Films",
+    "anime": "Anime",
+    "noRes": "No results found"
   },
   "LanguageSwitcher": {
     "english": "En",

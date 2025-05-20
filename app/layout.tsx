@@ -1,7 +1,5 @@
 import { routing } from 'i18n/routing'
 import type { Metadata } from 'next'
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
-import { ThemeProvider } from 'next-themes'
 
 import { montserrat } from './font'
 import { projectInfo } from '@/helpers/projectInfo'
@@ -33,9 +31,8 @@ export default async function RootLayout({
         <link rel='icon' href={projectInfo.favicon} />
       </head>
       <body className={montserrat.className}>
-        <NextIntlClientProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </NextIntlClientProvider>
+        {children}
+        <div id='portal-root'></div>
       </body>
     </html>
   )

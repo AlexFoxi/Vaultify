@@ -1,6 +1,7 @@
 'use client'
 
 import cn from 'clsx'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import Input from '@/components/ui/Input'
@@ -11,10 +12,10 @@ import styles from './styles.module.scss'
 
 type Options = {
   id: number
-  name: 'movie' | 'anime' | 'book'
+  name: 'films' | 'anime' | 'books'
 }
 
-type Category = 'movie' | 'anime' | 'book' | null
+type Category = 'films' | 'anime' | 'books' | null
 
 interface Search {
   category: Category
@@ -22,12 +23,13 @@ interface Search {
 }
 
 const CategoryData: Options[] = [
-  { id: 1, name: 'book' },
-  { id: 2, name: 'movie' },
+  { id: 1, name: 'books' },
+  { id: 2, name: 'films' },
   { id: 3, name: 'anime' }
 ]
 
 const Search = () => {
+  const t = useTranslations('header')
   const [category, setCategory] = useState<Category>(null)
   const [search, setSearch] = useState<string>('')
   const [debouncedSearch, setDebouncedSearch] = useState<string>('')
@@ -72,15 +74,16 @@ const Search = () => {
         <Select
           selectedVal={category}
           list={CategoryData}
-          placeholder='Category'
+          placeholder={t('category')}
           setSelect={handleSelect}
           variant='none'
+          translationKey='header'
         />
         <Input
           type='text'
           defaultValue={search}
           onChange={handleInput}
-          placeholder='Search'
+          placeholder={t('search')}
           variant='none'
         />
       </div>
@@ -97,7 +100,7 @@ const Search = () => {
             </div>
           ))
         ) : (
-          <div className={styles.noResults}>No results found</div>
+          <div className={styles.noResults}>{t('noRes')}</div>
         )}
       </div>
     </div>

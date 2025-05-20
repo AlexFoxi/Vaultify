@@ -1,3 +1,6 @@
+import { NextIntlClientProvider } from 'next-intl'
+import { ThemeProvider } from 'next-themes'
+
 import MainLayout from '@/layouts/MainLayout'
 
 type Props = {
@@ -6,10 +9,13 @@ type Props = {
 }
 
 export default async function Layout({ children, params }: Props) {
+  const locale = await Promise.resolve((await params).locale)
+
   return (
-    <MainLayout params={params}>
-      {children}
-      <div id='portal-root'></div>
-    </MainLayout>
+    <NextIntlClientProvider locale={locale}>
+      <ThemeProvider attribute='data-theme' defaultTheme='system'>
+        <MainLayout params={params}>{children}</MainLayout>
+      </ThemeProvider>
+    </NextIntlClientProvider>
   )
 }

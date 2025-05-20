@@ -1,8 +1,11 @@
 {
-  "welcome": "Привіт",
-  "change_language": "Змінити мову",
   "header": {
-    "search": "Пошук"
+    "search": "Пошук",
+    "category": "Категорії",
+    "books": "Книги",
+    "films": "Фільми",
+    "anime": "Аніме",
+    "noRes": "Нічого не знайдено"
   },
   "LanguageSwitcher": {
     "english": "En",

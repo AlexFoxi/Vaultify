@@ -1,57 +1,42 @@
 'use client'
 
 import cn from 'clsx'
-import { DefaultLocale, routing } from 'i18n/routing'
-import { useRouter, usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { Link, usePathname } from 'i18n/navigation'
+import { routing } from 'i18n/routing'
+import { useLocale } from 'next-intl'
+import { useRef, useState } from 'react'
 
 import styles from './styles.module.scss'
 import useClickOutside from '@/helpers/clickOutside'
 
 const LangSwitcher = () => {
-  const router = useRouter()
+  const locale = useLocale()
   const pathname = usePathname()
-  const currentLocale = pathname.startsWith('/ua') ? 'ua' : DefaultLocale
   const [open, setOpen] = useState(false)
   const langBoxRef = useRef<HTMLDivElement | null>(null)
+
   useClickOutside(langBoxRef, () => setOpen(false))
-
-  const handleLanguageShow = () => {
-    setOpen(!open)
-  }
-
-  const handleLanguageChange = (locale: string) => {
-    const newPath = pathname.replace(/^\/(en|ua)/, `/${locale}`)
-    router.push(newPath)
-
-    setOpen(false)
-  }
 
   return (
     <div className={styles.LangBox} ref={langBoxRef}>
-      <div className={styles.activeLang} onClick={handleLanguageShow}>
-        <button
-          className={styles.lang}
-          aria-expanded={open}
-          aria-haspopup='listbox'
-        >
-          {currentLocale}
+      <div className={styles.activeLang} onClick={() => setOpen(!open)}>
+        <button className={styles.lang} aria-expanded={open}>
+          {locale}
         </button>
       </div>
-      <div className={cn(styles.dropdown, open && styles.show)} role='listbox'>
-        {routing.locales.map(locale => (
-          <button
-            key={locale}
+      <div className={cn(styles.dropdown, open && styles.show)}>
+        {routing.locales.map(loc => (
+          <Link
+            key={loc}
+            href={pathname}
+            locale={loc}
             className={cn(
               styles.lang,
-              currentLocale === locale ? styles.selected : ''
+              locale === loc ? styles.selected : undefined
             )}
-            onClick={() => handleLanguageChange(locale)}
-            role='option'
-            aria-selected={currentLocale === locale}
           >
-            {locale}
-          </button>
+            {loc}
+          </Link>
         ))}
       </div>
     </div>

@@ -1,14 +1,7 @@
+import { defaultLocale, locales } from 'i18n/config'
 import { defineRouting } from 'next-intl/routing'
 
 export const routing = defineRouting({
-  locales: ['en', 'ua'],
-  defaultLocale: 'en'
-  // pathnames: {
-  //   '/anime': {
-  //     en: '/anime',
-  //     ua: '/аніме'
-  //   }
-  // }
+  locales,
+  defaultLocale
 })
-
-export const DefaultLocale = routing.defaultLocale

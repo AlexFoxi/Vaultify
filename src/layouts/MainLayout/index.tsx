@@ -1,5 +1,3 @@
-import { Metadata } from 'next'
-
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 
@@ -8,13 +6,6 @@ import styles from './styles.module.scss'
 type Props = {
   children: React.ReactNode
   params: { locale: string }
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Vaultify App',
-    description: 'App for story data'
-  }
 }
 
 export default async function MainLayoutLM({ children, params }: Props) {
@@ -27,7 +18,6 @@ export default async function MainLayoutLM({ children, params }: Props) {
         {children}
         <Footer />
       </div>
-      <div id='modal' />
     </div>
   )
 }

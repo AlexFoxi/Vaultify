@@ -2,7 +2,7 @@
 
 import cn from 'clsx'
 import { Link, usePathname } from 'i18n/navigation'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import NavigationLink from '@/ui/NavLink'
@@ -15,6 +15,7 @@ import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
 export default function Header() {
+  const t = useTranslations('header')
   const pathname = usePathname()
   const locale = useLocale()
   const logo = projectInfo.logo
@@ -49,21 +50,21 @@ export default function Header() {
             className={styles.navItem}
             locale={locale}
           >
-            <span>Books</span>
+            <span>{t('books')}</span>
           </NavigationLink>
           <NavigationLink
             href={`/films`}
             className={styles.navItem}
             locale={locale}
           >
-            <span>Films</span>
+            <span>{t('films')}</span>
           </NavigationLink>
           <NavigationLink
             href={`/anime`}
             className={styles.navItem}
             locale={locale}
           >
-            <span>Anime</span>
+            <span>{t('anime')}</span>
           </NavigationLink>
         </div>
         <Search />

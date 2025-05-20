@@ -1,4 +1,7 @@
+'use client'
+
 import cn from 'clsx'
+import { useTranslations } from 'next-intl'
 import { HTMLAttributes, useEffect, useRef, useState } from 'react'
 
 import styles from './styles.module.scss'
@@ -12,6 +15,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   selectedVal: string | null
   list: Record<string, any>
   setSelect: (value: any) => void
+  translationKey?: string
 }
 
 const Select = ({
@@ -20,8 +24,10 @@ const Select = ({
   placeholder,
   selectedVal,
   list,
-  setSelect
+  setSelect,
+  translationKey
 }: Props) => {
+  const t = useTranslations()
   const [selected, setSelected] = useState<boolean>(false)
   const ref = useRef<any>(null)
   const selectedRef = useRef<any>(null)
@@ -55,6 +61,11 @@ const Select = ({
     }
   }, [selected])
 
+  const getT = (val: string) => {
+    if (!translationKey) return val
+    return t(`${translationKey}.${val}`)
+  }
+
   return (
     <div className={styles.selectBox}>
       {title && <label className={styles.title}>{title}</label>}
@@ -64,7 +75,7 @@ const Select = ({
         className={styles.box}
       >
         <span className={cn(Boolean(!selectedVal) && styles.placeholder)}>
-          {selectedVal ? capitalizeFirst(selectedVal) : placeholder}
+          {selectedVal ? capitalizeFirst(getT(selectedVal)) : placeholder}
         </span>
         {/* {icon && (
           <IconWrapper className={`${selected ? 'selected ' : ''}`}>
@@ -91,7 +102,7 @@ const Select = ({
             )}
             role='option'
           >
-            <span>{capitalizeFirst(item.name)}</span>
+            <span>{capitalizeFirst(getT(item.name))}</span>
           </div>
         ))}
       </div>
