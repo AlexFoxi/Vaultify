@@ -1,3 +1,4 @@
+import ErrorPage from '@/layouts/Error'
 import NotFound from '@/screens/404'
 
 export const meta = {
@@ -8,5 +9,9 @@ export const meta = {
 }
 
 export default function NotFoundPage() {
-  return <NotFound />
+  return (
+    <ErrorPage locale='en'>
+      <NotFound />
+    </ErrorPage>
+  )
 }
