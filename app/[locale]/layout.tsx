@@ -31,10 +31,30 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel='icon' href={projectInfo.favicon} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (!theme || theme === 'system') {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })();
+            `
+          }}
+        />
       </head>
       <body className={montserrat.className}>
         <NextIntlClientProvider locale={locale}>
-          <ThemeProvider attribute='data-theme' defaultTheme='system'>
+          <ThemeProvider
+            attribute='data-theme'
+            defaultTheme='system'
+            enableSystem
+            storageKey={'theme'}
+          >
             <MainLayout params={params}>{children}</MainLayout>
           </ThemeProvider>
         </NextIntlClientProvider>

@@ -7,28 +7,30 @@ import { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 
 const Theme = () => {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  const handleToggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+  const { setTheme, resolvedTheme } = useTheme()
+  const [hydratedTheme, setHydratedTheme] = useState<'light' | 'dark' | null>(
+    null
+  )
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setHydratedTheme(resolvedTheme as 'light' | 'dark')
+  }, [resolvedTheme])
+
+  const toggleTheme = () => {
+    const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    setHydratedTheme(newTheme)
+  }
 
   return (
     <div className={styles.theme}>
-      {mounted && (
-        <button
-          onClick={handleToggleTheme}
-          className={cn(styles.toggler, theme === 'light' ? styles.light : '')}
-          aria-label='Toggle Theme'
-        >
-          <div className={styles.dot}></div>
-        </button>
-      )}
+      <button
+        onClick={toggleTheme}
+        className={cn(styles.toggler, hydratedTheme && styles[hydratedTheme])}
+        aria-label='Toggle Theme'
+      >
+        <div className={styles.dot}></div>
+      </button>
     </div>
   )
 }

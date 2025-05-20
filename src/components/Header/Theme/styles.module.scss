@@ -17,10 +17,18 @@
 
   &.light {
     .dot {
+      width: var(--dot_width);
       transform: translate(
         calc(var(--toggle_width) - var(--dot_width) - 0.4rem),
         -50%
       );
+    }
+  }
+
+  &.dark {
+    .dot {
+      width: var(--dot_width);
+      transform: translate(0.2rem, -50%);
     }
   }
 }
@@ -30,10 +38,10 @@
   top: 50%;
   left: 0;
   transform: translate(0.2rem, -50%);
-  background: var(--secondary-color);
-  width: var(--dot_width);
+  width: calc(100% - 0.4rem);
   height: var(--dot_width);
-  border-radius: calc($XS2 / 1.4);
+  border-radius: calc($XS2 / 1.35);
+  background: var(--secondary-color);
   padding: 0;
   transition: all 0.3s ease-in-out;
 }
