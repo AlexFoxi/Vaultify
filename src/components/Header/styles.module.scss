@@ -7,14 +7,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 0px 0px 10px
-    color-mix(in srgb, var(--secondary-color), transparent 70%);
+  box-shadow: 0px 0px 10px color-mix(in srgb, var(--secondary), transparent 70%);
 }
 
 .navBar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   gap: $XS;
 }
 
@@ -27,8 +25,8 @@
 
 .navItem {
   font-size: $TextG;
-  color: var(--secondary-color);
-  padding: $XS2;
+  color: var(--secondary);
+  padding: $XS8;
 
   span {
     display: block;

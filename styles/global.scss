@@ -2,13 +2,18 @@
 @use 'null';
 
 :root {
-  --main-color: #{$dark};
-  --secondary-color: #{$white};
-  --gray-color: #{$gray};
-  --grayDark-color: #{$gray-dark};
+  --main: #{$dark};
+  --secondary: #{$white};
+  --gray: #{$gray};
 
-  color: var(--gray-color);
-  background-color: var(--main-color);
+  --gray-rgb: #{$gray-rgb};
+  --grayDark-color: #{$gray-dark};
+  --dark-bg: #{$dark-bg};
+  --dark-bg-rgb: #{$dark-bg-rgb};
+  --white-bg-rgb: #{$white-bg-rgb};
+
+  color: var(--gray);
+  background-color: var(--main);
 
   color-scheme: light dark;
 
@@ -27,9 +32,12 @@ html {
   letter-spacing: 0.1px;
 
   &[data-theme='light'] {
-    --main-color: #{$white};
-    --secondary-color: #{$dark};
-    --gray-color: #{$gray-dark};
+    --main: #{$white};
+    --secondary: #{$dark};
+    --gray: #{$gray-dark};
+
+    --dark-bg: #{$white-bg};
+    --dark-bg-rgb: #{$white-bg-rgb};
   }
 }
 

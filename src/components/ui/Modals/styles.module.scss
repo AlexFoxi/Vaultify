@@ -17,9 +17,9 @@
   display: flex;
   flex-direction: column;
   gap: $XS;
-  background-color: var(--main-color);
+  background-color: var(--main);
   padding: $XS;
-  border-radius: $XS2;
+  border-radius: $XS8;
   width: 100%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 11;
@@ -41,8 +41,8 @@
 
 .close {
   position: absolute;
-  top: $XS2;
-  right: $XS2;
-  fill: var(--secondary-color);
+  top: $XS8;
+  right: $XS8;
+  fill: var(--secondary);
   cursor: pointer;
 }

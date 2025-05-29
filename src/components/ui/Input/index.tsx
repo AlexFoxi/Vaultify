@@ -1,9 +1,9 @@
-import EyeHiddenIco from 'assets/icons/EyeHiddenIco'
-import EyeIco from 'assets/icons/EyeIco'
 import cn from 'clsx'
 import { HTMLAttributes, ReactElement, useState } from 'react'
 import React from 'react'
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
+
+import { EyeHiddenIco, EyeIco } from '@/assets/icons'
 
 import styles from './styles.module.scss'
 

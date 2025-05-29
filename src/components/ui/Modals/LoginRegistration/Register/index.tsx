@@ -1,10 +1,10 @@
-import PassIco from 'assets/icons/PassIco'
-import UserIco from 'assets/icons/UserIco'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+
+import { PassIco, UserIco } from '@/assets/icons'
 
 import styles from './styles.module.scss'
 

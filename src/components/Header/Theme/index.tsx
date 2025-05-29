@@ -4,6 +4,8 @@ import cn from 'clsx'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
+import { MoonIco, SunIco } from '@/assets/icons'
+
 import styles from './styles.module.scss'
 
 const Theme = () => {
@@ -16,6 +18,8 @@ const Theme = () => {
     setHydratedTheme(resolvedTheme as 'light' | 'dark')
   }, [resolvedTheme])
 
+  if (!hydratedTheme) return null
+
   const toggleTheme = () => {
     const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)
@@ -26,10 +30,10 @@ const Theme = () => {
     <div className={styles.theme}>
       <button
         onClick={toggleTheme}
-        className={cn(styles.toggler, hydratedTheme && styles[hydratedTheme])}
+        className={styles.toggler}
         aria-label='Toggle Theme'
       >
-        <div className={styles.dot}></div>
+        {hydratedTheme == 'light' ? <MoonIco /> : <SunIco />}
       </button>
     </div>
   )

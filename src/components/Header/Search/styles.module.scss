@@ -2,24 +2,29 @@
 
 .searchBox {
   position: relative;
+  margin-left: auto;
+  height: auto;
+
   &.showed {
     .search {
-      border-radius: $XS2 $XS2 0 0;
+      border-radius: $XS4 $XS4 0 0;
     }
   }
 }
 
 .search {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: $XS2;
-  border: 1px solid var(--secondary-color);
-  border-radius: $XS2;
+  background: var(--dark-bg);
+  gap: $XS8;
+  border-radius: $XS4;
   max-width: 16rem;
   width: 100%;
+  height: 100%;
   z-index: 2;
   transition: border-radius 0.3s ease;
+
+  &.show {
+    border-radius: $XS4 $XS4 0 0;
+  }
 }
 
 .searchRes {
@@ -27,16 +32,16 @@
   top: calc(100% - 1px);
   left: 0;
   width: 100%;
-  padding: $XS2;
-  border: 1px solid var(--secondary-color);
-  border-radius: 0 0 $XS2 $XS2;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--main-color);
+  padding: $XS8;
+  border-radius: 0 0 $XS4 $XS4;
+  background: var(--dark-bg);
   display: flex;
   flex-direction: column;
-  row-gap: $XS2;
+  row-gap: $XS8;
+
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.3s ease;
 
   &.show {

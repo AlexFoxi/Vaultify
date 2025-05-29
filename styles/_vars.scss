@@ -1,8 +1,14 @@
 // Colors
-$dark: #0c0020;
+$dark: #0a001b;
 $white: #ededed;
-$gray: rgb(230, 230, 230);
-$gray-dark: rgb(73, 73, 73);
+$gray: #e6e6e6;
+$dark-bg: #21214a;
+$white-bg: #d6d6e2;
+
+$gray-rgb: 230, 230, 230;
+$gray-dark: 73, 73, 73;
+$dark-bg-rgb: 33, 33, 74;
+$white-bg-rgb: 214, 214, 226;
 
 $red: #810000;
 $redText: #9e0000;
@@ -12,7 +18,8 @@ $L: 5.6rem;
 $M: 3.2rem;
 $S: 2.4rem;
 $XS: 1.6rem;
-$XS2: 0.8rem;
+$XS8: 0.8rem;
+$XS4: 0.4rem;
 
 // Text size
 $TextXL: 4.6rem;

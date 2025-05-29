@@ -1,11 +1,12 @@
 'use client'
 
-import SearchIco from 'assets/icons/SearchIco'
 import cn from 'clsx'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import Input from '@/components/ui/Input'
+
+import { SearchIco } from '@/assets/icons'
 
 import styles from './styles.module.scss'
 
@@ -50,7 +51,9 @@ const Search = () => {
 
   return (
     <div className={styles.searchBox}>
-      <div className={styles.search}>
+      <div
+        className={cn(styles.search, searchResults.length > 0 && styles.show)}
+      >
         <Input
           type='text'
           defaultValue={search}

@@ -6,6 +6,8 @@ import { routing } from 'i18n/routing'
 import { useLocale } from 'next-intl'
 import { useRef, useState } from 'react'
 
+import { LangIco } from '@/assets/icons'
+
 import styles from './styles.module.scss'
 import useClickOutside from '@/helpers/clickOutside'
 
@@ -16,33 +18,30 @@ const LangSwitcher = () => {
   const langBoxRef = useRef<HTMLDivElement | null>(null)
 
   useClickOutside(langBoxRef, () => setOpen(false))
+  console.log(routing.locales)
 
   return (
     <div className={cn(styles.LangBox, open && styles.show)} ref={langBoxRef}>
-      <button
-        className={styles.lang}
-        aria-expanded={open}
+      <div
+        className={cn(styles.activeLang, styles.lang)}
         onClick={() => setOpen(!open)}
       >
-        {locale}
-      </button>
-
+        <LangIco />
+      </div>
       <div className={styles.dropdown}>
-        {routing.locales
-          .filter(loc => loc !== locale)
-          .map(loc => (
-            <Link
-              key={loc}
-              href={pathname}
-              locale={loc}
-              className={cn(
-                styles.lang,
-                locale === loc ? styles.selected : undefined
-              )}
-            >
-              {loc}
-            </Link>
-          ))}
+        {routing.locales.map(loc => (
+          <Link
+            key={loc}
+            href={pathname}
+            locale={loc}
+            className={cn(
+              styles.lang,
+              locale === loc ? styles.selected : undefined
+            )}
+          >
+            {loc}
+          </Link>
+        ))}
       </div>
     </div>
   )
