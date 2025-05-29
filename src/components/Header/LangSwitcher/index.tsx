@@ -18,26 +18,31 @@ const LangSwitcher = () => {
   useClickOutside(langBoxRef, () => setOpen(false))
 
   return (
-    <div className={styles.LangBox} ref={langBoxRef}>
-      <div className={styles.activeLang} onClick={() => setOpen(!open)}>
-        <button className={styles.lang} aria-expanded={open}>
-          {locale}
-        </button>
-      </div>
-      <div className={cn(styles.dropdown, open && styles.show)}>
-        {routing.locales.map(loc => (
-          <Link
-            key={loc}
-            href={pathname}
-            locale={loc}
-            className={cn(
-              styles.lang,
-              locale === loc ? styles.selected : undefined
-            )}
-          >
-            {loc}
-          </Link>
-        ))}
+    <div className={cn(styles.LangBox, open && styles.show)} ref={langBoxRef}>
+      <button
+        className={styles.lang}
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        {locale}
+      </button>
+
+      <div className={styles.dropdown}>
+        {routing.locales
+          .filter(loc => loc !== locale)
+          .map(loc => (
+            <Link
+              key={loc}
+              href={pathname}
+              locale={loc}
+              className={cn(
+                styles.lang,
+                locale === loc ? styles.selected : undefined
+              )}
+            >
+              {loc}
+            </Link>
+          ))}
       </div>
     </div>
   )
