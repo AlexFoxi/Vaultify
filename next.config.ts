@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       '@/components': 'src/components',
       '@/styles': 'styles',
-      '@/assets': 'src/assets',
+      '@/assets': 'assets',
       '@/layouts': 'src/layouts',
       '@/screens': 'src/screens',
       '@/helpers': 'src/helpers',

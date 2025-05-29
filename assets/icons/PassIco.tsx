@@ -5,6 +5,7 @@ interface Props extends HTMLAttributes<HTMLOrSVGElement> {
   width?: number
   height?: number
 }
+
 const PassIco: React.FC<Props> = ({
   fill = '#000',
   width = 14,
