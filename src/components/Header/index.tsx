@@ -14,7 +14,7 @@ import User from './User'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
-export default function Header() {
+const Header = () => {
   const t = useTranslations('header')
   const pathname = usePathname()
   const locale = useLocale()
@@ -31,7 +31,7 @@ export default function Header() {
       <div className={cn('container', styles.navBar)}>
         <div className={styles.logo}>
           <Link
-            href={pathname}
+            href={'/'}
             onClick={handleLogoClick}
             title='Logo'
             locale={locale}
@@ -75,3 +75,5 @@ export default function Header() {
     </div>
   )
 }
+
+export default Header

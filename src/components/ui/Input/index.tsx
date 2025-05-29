@@ -16,7 +16,7 @@ type ErrorType =
   | undefined
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  id?: string
+  forId?: string
   type: Type
   title?: string
   required?: boolean
@@ -41,7 +41,7 @@ const getErrorMessage = (error: ErrorType): string | undefined => {
 }
 
 const Input = ({
-  id,
+  forId,
   type = 'text',
   title,
   required = false,
@@ -73,7 +73,7 @@ const Input = ({
   return (
     <div className={styles.inputBox}>
       {title && (
-        <label className={styles.title} htmlFor={id}>
+        <label className={styles.title} htmlFor={forId}>
           {title}
           {required && <span className={styles.required}>*</span>}
         </label>
@@ -94,8 +94,8 @@ const Input = ({
             placeholder={placeholder}
             onChange={handleChange}
             readOnly={readonly}
+            id={forId}
             {...rest}
-            id={`#${id}`}
           />
           {toggleType && (
             <button
