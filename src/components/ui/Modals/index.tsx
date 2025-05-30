@@ -1,3 +1,5 @@
+'use client'
+
 import CloseIco from 'assets/icons/CloseIco'
 import cn from 'clsx'
 import { ReactNode, useRef } from 'react'

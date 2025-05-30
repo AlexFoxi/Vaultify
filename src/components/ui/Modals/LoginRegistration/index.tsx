@@ -16,20 +16,20 @@ const LoginRegisterModal = ({
   onLogin,
   onRegistration
 }: ModalProps) => {
-  const [isToggle, setIsToggle] = useState(false)
+  const [isLogin, setIsLogin] = useState(false)
 
   return (
     <Modal variant={'w40'} onClose={onClose}>
-      <h2 className={styles.title}>{isToggle ? 'Enter' : 'Registration'}</h2>
+      <h2 className={styles.title}>{isLogin ? 'Registration' : 'Enter'}</h2>
       <div className={styles.box}>
-        {isToggle ? (
+        {isLogin ? (
           <RegisterModal
-            hideRegistration={() => setIsToggle(!isToggle)}
+            hideRegistration={() => setIsLogin(!isLogin)}
             onRegistration={onRegistration}
           />
         ) : (
           <LoginModal
-            showRegistration={() => setIsToggle(!isToggle)}
+            showRegistration={() => setIsLogin(!isLogin)}
             onLogin={onLogin}
           />
         )}

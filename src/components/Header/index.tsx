@@ -2,38 +2,40 @@
 
 import cn from 'clsx'
 import { Link, usePathname } from 'i18n/navigation'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
-
-import NavigationLink from '@/ui/NavLink'
+import { useCallback } from 'react'
 
 import LangSwitcher from './LangSwitcher'
+import Navigation from './Navigation'
 import Search from './Search'
 import Theme from './Theme'
 import User from './User'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
-const Header = () => {
-  const t = useTranslations('header')
+const Header: React.FC = () => {
   const pathname = usePathname()
   const locale = useLocale()
   const logo = projectInfo.logo
 
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === '/en' || pathname === '/ua') {
-      e.preventDefault()
-    }
-  }
+  const handleLogoClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === '/en' || pathname === '/ua') {
+        e.preventDefault()
+      }
+    },
+    [pathname]
+  )
 
   return (
     <div className={styles.header}>
-      <div className={cn('container', styles.navBar)}>
+      <nav className={cn('container', styles.navBar)}>
         <div className={styles.logo}>
           <Link
             href={'/'}
             onClick={handleLogoClick}
-            title='Logo'
+            title='Vault Logo'
             locale={locale}
           >
             <Image
@@ -44,34 +46,12 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div className={styles.nav}>
-          <NavigationLink
-            href={`/books`}
-            className={styles.navItem}
-            locale={locale}
-          >
-            <span>{t('books')}</span>
-          </NavigationLink>
-          <NavigationLink
-            href={`/films`}
-            className={styles.navItem}
-            locale={locale}
-          >
-            <span>{t('films')}</span>
-          </NavigationLink>
-          <NavigationLink
-            href={`/anime`}
-            className={styles.navItem}
-            locale={locale}
-          >
-            <span>{t('anime')}</span>
-          </NavigationLink>
-        </div>
+        <Navigation locale={locale} />
         <Search />
         <Theme />
         <LangSwitcher />
         <User />
-      </div>
+      </nav>
     </div>
   )
 }

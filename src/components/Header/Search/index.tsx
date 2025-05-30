@@ -2,7 +2,7 @@
 
 import cn from 'clsx'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import Input from '@/components/ui/Input'
 
@@ -14,7 +14,7 @@ interface Search {
   search: string
 }
 
-const Search = () => {
+const Search: React.FC = () => {
   const t = useTranslations('header')
   const [search, setSearch] = useState<string>('')
   const [debouncedSearch, setDebouncedSearch] = useState<string>('')
@@ -32,22 +32,38 @@ const Search = () => {
     return () => clearTimeout(timer)
   }, [search])
 
-  useEffect(() => {
-    const handleSearch = ({ search }: Search) => {
-      // console.log(`Category: ${category}, Search Query: ${search}`)
-      if (search) {
-        setSearchResults([
-          `result 1 for "${search}"`,
-          `result 2 for "${search}"`,
-          `result 3 for "${search}"`
-        ])
-      } else {
-        setSearchResults([])
-      }
-    }
+  // useEffect(() => {
+  //   const handleSearch = ({ search }: Search) => {
+  //     // console.log(`Category: ${category}, Search Query: ${search}`)
+  //     if (search) {
+  //       setSearchResults([
+  //         `result 1 for "${search}"`,
+  //         `result 2 for "${search}"`,
+  //         `result 3 for "${search}"`
+  //       ])
+  //     } else {
+  //       setSearchResults([])
+  //     }
+  //   }
 
-    handleSearch({ search: debouncedSearch })
-  }, [debouncedSearch])
+  //   handleSearch({ search: debouncedSearch })
+  // }, [debouncedSearch])
+
+  const handleSearch = useCallback((query: string) => {
+    if (query) {
+      setSearchResults([
+        `result 1 for "${query}"`,
+        `result 2 for "${query}"`,
+        `result 3 for "${query}"`
+      ])
+    } else {
+      setSearchResults([])
+    }
+  }, [])
+
+  useEffect(() => {
+    handleSearch(debouncedSearch)
+  }, [debouncedSearch, handleSearch])
 
   return (
     <div className={styles.searchBox}>
@@ -56,7 +72,7 @@ const Search = () => {
       >
         <Input
           type='text'
-          defaultValue={search}
+          defaultValue={''}
           onChange={handleInput}
           placeholder={t('search')}
           variant='none'

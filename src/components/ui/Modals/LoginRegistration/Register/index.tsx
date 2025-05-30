@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+'use client'
+
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Button from '@/components/ui/Button'
@@ -20,96 +21,85 @@ interface ModalProps {
 }
 
 const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleRegistration = () => {
-    if (username && password) {
-      onRegistration()
-    }
-  }
-
   const {
-    register: formRegistration,
+    register,
     handleSubmit,
-    reset,
     getValues,
     formState: { errors }
   } = useForm<FormData>({
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: ''
+    }
   })
 
-  const onSubmit: SubmitHandler<FormData> = (data, event) => {
-    event?.preventDefault()
+  const onSubmit: SubmitHandler<FormData> = data => {
     console.log(errors.email, data)
+    onRegistration()
   }
-
-  useEffect(() => {
-    reset()
-  }, [])
 
   return (
     <>
-      <form className={styles.form}>
-        <Input
-          {...formRegistration('email', {
-            required: 'Email is required',
-            pattern: {
-              value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-              message: 'Please enter valid email'
-            }
-          })}
-          id='login'
-          title='Login:'
-          type='text'
-          defaultValue={''}
-          error={errors.email?.message}
-          icon={<UserIco />}
-        />
-        <Input
-          {...formRegistration('password', {
-            required: 'Password is required',
-            minLength: {
-              value: 6,
-              message: 'Min length 6 numbs'
-            },
-            validate: value =>
-              /^[a-zA-Z0-9]*$/.test(value) || 'Only numbers and letters'
-          })}
-          type={'password'}
-          id='password'
-          title='Password:'
-          defaultValue={''}
-          toggleType
-          icon={<PassIco />}
-          error={errors.password?.message}
-        />
-        <div className={styles.group}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.form}>
           <Input
-            {...formRegistration('confirmPassword', {
-              required: 'Confirm password is required',
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: 'Please enter valid email'
+              }
+            })}
+            id='email'
+            title='Login:'
+            type='text'
+            error={errors.email?.message}
+            icon={<UserIco />}
+          />
+          <Input
+            {...register('password', {
+              required: 'Password is required',
+              minLength: {
+                value: 6,
+                message: 'Min length 6 numbs'
+              },
               validate: value =>
-                value === getValues('password') || 'Passwords do not match'
+                /^[a-zA-Z0-9]*$/.test(value) || 'Only numbers and letters'
             })}
             type={'password'}
-            id='confirmPassword'
-            title='Confirm Password:'
-            defaultValue={''}
+            id='password'
+            title='Password:'
             toggleType
             icon={<PassIco />}
-            error={errors.confirmPassword?.message}
+            error={errors.password?.message}
           />
+          <div className={styles.group}>
+            <Input
+              {...register('confirmPassword', {
+                required: 'Confirm password is required',
+                validate: value =>
+                  value === getValues('password') || 'Passwords do not match'
+              })}
+              type={'password'}
+              id='confirmPassword'
+              title='Confirm Password:'
+              toggleType
+              icon={<PassIco />}
+              error={errors.confirmPassword?.message}
+            />
+          </div>
+        </div>
+        <div className={styles.buttons}>
+          <Button variant='bordered' type='submit'>
+            Register
+          </Button>
+          <Button variant='bordered' onClick={hideRegistration}>
+            Back to Login
+          </Button>
         </div>
       </form>
-
-      <div className={styles.buttons}>
-        <Button variant='bordered' onClick={handleSubmit(onSubmit)}>
-          Register
-        </Button>
-        <Button variant='bordered' onClick={hideRegistration}>
-          Back to Login
-        </Button>
-      </div>
     </>
   )
 }

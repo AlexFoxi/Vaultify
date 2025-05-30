@@ -3,32 +3,27 @@ import React from 'react'
 
 import styles from './styles.module.scss'
 
-type Variant = 'none' | 'bordered'
-
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
-  variant: Variant
+  variant: 'none' | 'bordered'
+  type?: 'button' | 'submit' | 'reset' | undefined
 }
 
 const Button = ({
   variant = 'bordered',
+  type = 'button',
   onClick,
   children,
   ...rest
 }: Props) => {
   return variant === 'bordered' ? (
     <div className={styles.bordered}>
-      <button
-        type='button'
-        className={styles.button}
-        onClick={onClick}
-        {...rest}
-      >
+      <button type={type} className={styles.button} onClick={onClick} {...rest}>
         {children}
       </button>
     </div>
   ) : (
     <button
-      type='button'
+      type={type}
       className={cn(styles.button, styles[variant])}
       onClick={onClick}
       {...rest}

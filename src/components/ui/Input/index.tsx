@@ -24,7 +24,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   placeholder?: string
   error?: ErrorType
   readonly?: boolean
-  defaultValue: string | number
+  defaultValue?: string
   toggleType?: boolean
   icon?: ReactElement
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
