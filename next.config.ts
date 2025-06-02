@@ -1,8 +1,11 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
+import { envKeys } from './config'
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  env: envKeys,
   turbopack: {
     resolveAlias: {
       '@/components': 'src/components',
