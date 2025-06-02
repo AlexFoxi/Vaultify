@@ -42,8 +42,8 @@ const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <div>
           <Input
             {...register('email', {
               required: 'Email is required',
@@ -55,6 +55,8 @@ const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
             id='email'
             title='Login:'
             type='text'
+            variant='bg'
+            placeholder='example@mail.com'
             error={errors.email?.message}
             icon={<UserIco />}
           />
@@ -72,24 +74,26 @@ const RegisterModal = ({ onRegistration, hideRegistration }: ModalProps) => {
             id='password'
             title='Password:'
             toggleType
+            variant='bg'
+            placeholder='******'
             icon={<PassIco />}
             error={errors.password?.message}
           />
-          <div className={styles.group}>
-            <Input
-              {...register('confirmPassword', {
-                required: 'Confirm password is required',
-                validate: value =>
-                  value === getValues('password') || 'Passwords do not match'
-              })}
-              type={'password'}
-              id='confirmPassword'
-              title='Confirm Password:'
-              toggleType
-              icon={<PassIco />}
-              error={errors.confirmPassword?.message}
-            />
-          </div>
+          <Input
+            {...register('confirmPassword', {
+              required: 'Confirm password is required',
+              validate: value =>
+                value === getValues('password') || 'Passwords do not match'
+            })}
+            type={'password'}
+            id='confirmPassword'
+            title='Confirm Password:'
+            toggleType
+            variant='bg'
+            placeholder='******'
+            icon={<PassIco />}
+            error={errors.confirmPassword?.message}
+          />
         </div>
         <div className={styles.buttons}>
           <Button variant='bordered' type='submit'>

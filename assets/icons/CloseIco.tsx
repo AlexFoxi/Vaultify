@@ -7,8 +7,8 @@ interface Props extends HTMLAttributes<HTMLOrSVGElement> {
 }
 const CloseIco: React.FC<Props> = ({
   fill = '#000',
-  width = 20,
-  height = 20,
+  width = 16,
+  height = 16,
   ...props
 }) => (
   <svg

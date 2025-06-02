@@ -40,8 +40,8 @@ const LoginModal = ({ onLogin, showRegistration }: LoginModalProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <div>
           <Input
             {...register('email', {
               required: 'Email is required',
@@ -53,6 +53,8 @@ const LoginModal = ({ onLogin, showRegistration }: LoginModalProps) => {
             id='email'
             title='Login:'
             type='text'
+            variant='bg'
+            placeholder='example@mail.com'
             error={errors.email?.message}
             icon={<UserIco />}
           />
@@ -69,6 +71,8 @@ const LoginModal = ({ onLogin, showRegistration }: LoginModalProps) => {
             type='password'
             id='password'
             title='Password:'
+            variant='bg'
+            placeholder='******'
             error={errors.password?.message}
             icon={<PassIco />}
           />

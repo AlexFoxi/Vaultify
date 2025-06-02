@@ -31,10 +31,17 @@
   display: flex;
   flex-direction: column;
   gap: $XS;
+
+  > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: $XS;
+  }
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   gap: $XS8;
+  margin-top: $XS;
 }

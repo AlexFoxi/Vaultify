@@ -8,7 +8,7 @@ import { EyeHiddenIco, EyeIco } from '@/assets/icons'
 import styles from './styles.module.scss'
 
 type Type = 'text' | 'number' | 'email' | 'password'
-type Variant = 'none' | 'bordered'
+type Variant = 'none' | 'bordered' | 'bg'
 type ErrorType =
   | string
   | FieldError
@@ -45,7 +45,7 @@ const Input = ({
   type = 'text',
   title,
   required = false,
-  variant = 'bordered',
+  variant = 'none',
   placeholder,
   error,
   readonly = false,
