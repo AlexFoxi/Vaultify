@@ -14,7 +14,7 @@ interface Search {
   search: string
 }
 
-const Search: React.FC = () => {
+const Search = () => {
   const t = useTranslations('header')
   const [search, setSearch] = useState<string>('')
   const [debouncedSearch, setDebouncedSearch] = useState<string>('')

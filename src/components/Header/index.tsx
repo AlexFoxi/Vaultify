@@ -4,7 +4,7 @@ import cn from 'clsx'
 import { Link, usePathname } from 'i18n/navigation'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import { useCallback } from 'react'
+import { Suspense, useCallback } from 'react'
 
 import LangSwitcher from './LangSwitcher'
 import Navigation from './Navigation'
@@ -14,7 +14,7 @@ import User from './User'
 import styles from './styles.module.scss'
 import { projectInfo } from '@/helpers/projectInfo'
 
-const Header: React.FC = () => {
+const Header = () => {
   const pathname = usePathname()
   const locale = useLocale()
   const logo = projectInfo.logo

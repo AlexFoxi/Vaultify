@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 
 import LoginRegisterModal from '@/components/ui/Modals/LoginRegistration'
 
@@ -47,6 +47,7 @@ const User = () => {
           src='/userTest.jpg'
           alt='Avatar'
           className={styles.avatar}
+          loading='eager'
         />
       </button>
 
@@ -70,4 +71,4 @@ const User = () => {
   )
 }
 
-export default User
+export default memo(User)

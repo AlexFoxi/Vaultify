@@ -4,7 +4,7 @@ import cn from 'clsx'
 import { Link, usePathname } from 'i18n/navigation'
 import { routing } from 'i18n/routing'
 import { useLocale } from 'next-intl'
-import { useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 
 import { LangIco } from '@/assets/icons'
 
@@ -18,14 +18,10 @@ const LangSwitcher = () => {
   const langBoxRef = useRef<HTMLDivElement | null>(null)
 
   useClickOutside(langBoxRef, () => setOpen(false))
-  console.log(routing.locales)
 
   return (
     <div className={cn(styles.LangBox, open && styles.show)} ref={langBoxRef}>
-      <div
-        className={cn(styles.activeLang, styles.lang)}
-        onClick={() => setOpen(!open)}
-      >
+      <div className={styles.activeLang} onClick={() => setOpen(!open)}>
         <LangIco />
       </div>
       <div className={styles.dropdown}>
@@ -47,4 +43,4 @@ const LangSwitcher = () => {
   )
 }
 
-export default LangSwitcher
+export default memo(LangSwitcher)
