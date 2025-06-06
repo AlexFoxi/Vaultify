@@ -8,9 +8,7 @@ type Props = {
   params: { locale: string }
 }
 
-export default async function MainLayoutLM({ children, params }: Props) {
-  // const { lang } = await params
-
+export default async function MainLayout({ children, params }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>

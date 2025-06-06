@@ -1,14 +1,13 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
-import { envKeys } from './config'
-
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  env: envKeys,
   turbopack: {
     resolveAlias: {
       '@/components': 'src/components',
+      '@/services': 'src/services',
+      '@/api': 'src/api',
       '@/styles': 'styles',
       '@/assets': 'assets',
       '@/layouts': 'src/layouts',
@@ -19,6 +18,16 @@ const nextConfig: NextConfig = {
       '@/*': './*'
     },
     resolveExtensions: ['.ts', '.tsx', '.js', '.json', '.scss']
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'covers.openlibrary.org',
+        port: '',
+        pathname: '/**'
+      }
+    ]
   }
 }
 

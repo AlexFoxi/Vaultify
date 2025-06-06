@@ -3,6 +3,8 @@ import { routing } from 'i18n/routing'
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 import { projectInfo } from '@/helpers/projectInfo'
 import MainLayout from '@/layouts/MainLayout'
@@ -31,21 +33,6 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel='icon' href={projectInfo.favicon} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (!theme || theme === 'system') {
-                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  }
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch(e) {}
-              })();
-            `
-          }}
-        />
       </head>
       <body className={montserrat.className}>
         <NextIntlClientProvider locale={locale}>
