@@ -1,0 +1,11 @@
+@use './styles/vars' as *;
+
+.block {
+  width: 100%;
+}
+
+.books {
+}
+.title {
+  margin-bottom: $S;
+}
