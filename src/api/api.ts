@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 import { getContentType } from './api.helper'
 
@@ -24,29 +24,5 @@ const AXIOS_BOOKS = axios.create({
 //     return Promise.reject(error)
 //   }
 // )
-
-export async function safeRequest<T = any>(
-  request: () => Promise<AxiosResponse<T>>,
-  fallback: T
-): Promise<T> {
-  try {
-    const { data } = await request()
-    return data
-  } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      console.log('Axios error:', error.message)
-
-      // if (error.code === 'ECONNABORTED') {
-      //   console.log('⏱️ Timeout error')
-      // } else {
-      //   console.log('❌ Axios error:', error.message)
-      // }
-    } else {
-      console.log('❓ Unknown error:', error)
-    }
-
-    return fallback
-  }
-}
 
 export default AXIOS_BOOKS
