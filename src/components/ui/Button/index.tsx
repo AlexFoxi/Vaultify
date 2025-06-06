@@ -15,21 +15,21 @@ const Button = ({
   children,
   ...rest
 }: Props) => {
-  return variant === 'bordered' ? (
-    <div className={styles.bordered}>
-      <button type={type} className={styles.button} onClick={onClick} {...rest}>
-        {children}
-      </button>
-    </div>
-  ) : (
+  const button = (
     <button
       type={type}
-      className={cn(styles.button, styles[variant])}
+      className={cn(styles.button, variant !== 'bordered' && styles[variant])}
       onClick={onClick}
       {...rest}
     >
       {children}
     </button>
+  )
+
+  return variant === 'bordered' ? (
+    <div className={styles.bordered}>{button}</div>
+  ) : (
+    button
   )
 }
 
