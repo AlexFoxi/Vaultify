@@ -4,7 +4,11 @@ import { getContentType } from './api.helper'
 
 const AXIOS_BOOKS = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BOOKS_API,
-  timeout: 2000,
+  headers: getContentType()
+})
+
+const AXIOS_MOVIES = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_MOVIES_API,
   headers: getContentType()
 })
 
@@ -25,4 +29,4 @@ const AXIOS_BOOKS = axios.create({
 //   }
 // )
 
-export default AXIOS_BOOKS
+export { AXIOS_BOOKS, AXIOS_MOVIES }

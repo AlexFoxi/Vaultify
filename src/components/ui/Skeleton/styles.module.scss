@@ -1,0 +1,21 @@
+@use './styles/vars' as *;
+
+.skeleton {
+  --background: hsl(222deg 47% 11%);
+  --block: hsl(215deg 25% 27%);
+  --loader: hsl(0 0% 100% / 10%);
+
+  background:
+    linear-gradient(-75deg, transparent 40%, var(--loader), transparent 60%) 0
+      0 / 200% 100%,
+    var(--block);
+  border-radius: calc(1rem * 0.5);
+  animation: load 2s infinite linear;
+  background-attachment: fixed;
+}
+
+@keyframes load {
+  to {
+    background-position: 200% 0;
+  }
+}

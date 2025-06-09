@@ -1,4 +1,5 @@
-import AXIOS_BOOKS, { safeRequest } from '@/api/api'
+import { AXIOS_BOOKS } from '@/api/api'
+import { safeRequest } from '@/api/api.helper'
 
 import { Work } from '@/types/books'
 
@@ -22,7 +23,7 @@ export const BookService = {
       () =>
         AXIOS_BOOKS.get(`/subjects/${encodeURIComponent(subject)}.json`, {
           params: { limit, offset, ebooks: true },
-          timeout: 5000
+          timeout: 2000
         }),
       []
     ).then(data => data.works || [])
