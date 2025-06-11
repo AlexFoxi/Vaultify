@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.myanimelist.net',
         port: '',
         pathname: '/images/anime/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        port: '',
+        pathname: '/**'
       }
     ]
   }

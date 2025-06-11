@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
@@ -9,11 +9,11 @@ import SliderSkeleton from '@/components/SliderSkeleton'
 
 import useSliderMediaQuery from '@/hooks/SliderMediaQuery'
 
-import BookCard from './BookCard'
+import MoviesCard from './MoviesCard'
 import localData from './data.json'
 import styles from './styles.module.scss'
-import { BookService } from '@/services/books'
-import { Work } from '@/types/books'
+import { MoviesService } from '@/services/movies'
+import { Movie } from '@/types/movies'
 
 type brProps = {
   [width: number]: SwiperOptions
@@ -28,21 +28,22 @@ const breakpoints: brProps = {
   1280: { slidesPerView: 7 }
 }
 
-const BookSlider = () => {
-  const [books, setBooks] = useState<Work[]>([])
+const MovieSlider = () => {
+  const [movies, setMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
   const perView = useSliderMediaQuery(breakpoints)
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      // const data = await BookService.getTrendingBySubject('fantasy', 10)
+    const fetchMovies = async () => {
+      // const data = await MoviesService.getPerPage('movie', 1, 'uk-UA')
       const data = localData
+      console.log(data.results, 'results')
 
-      setBooks(data)
+      setMovies(data.results)
       setLoading(false)
     }
 
-    fetchBooks()
+    fetchMovies()
   }, [])
 
   const pagination = {
@@ -63,9 +64,9 @@ const BookSlider = () => {
         breakpoints={breakpoints}
         className={styles.books}
       >
-        {books.map(book => (
-          <SwiperSlide key={book.key}>
-            <BookCard book={book} />
+        {movies.map(movie => (
+          <SwiperSlide key={movie.id}>
+            <MoviesCard movie={movie} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -73,4 +74,4 @@ const BookSlider = () => {
   )
 }
 
-export default BookSlider
+export default MovieSlider
