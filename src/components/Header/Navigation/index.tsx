@@ -11,14 +11,14 @@ interface NavigationProps {
   locale: string
 }
 
+const links = [
+  { href: '/books', name: 'books' },
+  { href: '/films', name: 'films' },
+  { href: '/anime', name: 'anime' }
+]
+
 const Navigation: React.FC<NavigationProps> = ({ locale }) => {
   const t = useTranslations('header')
-
-  const links = [
-    { href: '/books', name: 'books' },
-    { href: '/films', name: 'films' },
-    { href: '/anime', name: 'anime' }
-  ]
 
   return (
     <div className={styles.nav}>
