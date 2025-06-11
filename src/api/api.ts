@@ -12,6 +12,11 @@ const AXIOS_MOVIES = axios.create({
   headers: getContentType()
 })
 
+const AXIOS_ANIME = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_ANIME_API,
+  headers: getContentType()
+})
+
 // AXIOS_BOOKS.interceptors.request.use((config: any) => {
 //   console.log(
 //     'Axios URL:',
@@ -29,4 +34,4 @@ const AXIOS_MOVIES = axios.create({
 //   }
 // )
 
-export { AXIOS_BOOKS, AXIOS_MOVIES }
+export { AXIOS_BOOKS, AXIOS_MOVIES, AXIOS_ANIME }

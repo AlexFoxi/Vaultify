@@ -1,3 +1,4 @@
+import AnimeSlider from './AnimeSlider'
 import BookSlider from './BookSlider'
 import styles from './styles.module.scss'
 
@@ -7,6 +8,10 @@ const Home = () => {
       <article className={styles.block}>
         <h1 className={styles.title}>Trending Books</h1>
         <BookSlider />
+      </article>
+      <article className={styles.block}>
+        <h1 className={styles.title}>Trending Anime</h1>
+        <AnimeSlider />
       </article>
     </div>
   )

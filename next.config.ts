@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
         hostname: 'covers.openlibrary.org',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.myanimelist.net',
+        port: '',
+        pathname: '/images/anime/**'
       }
     ]
   }
