@@ -22,19 +22,4 @@ export const MoviesService = {
       []
     ).then(res => res)
   }
-
-  // async getTrendingBySubject(
-  //   subject: string,
-  //   limit = 10,
-  //   offset = 0
-  // ): Promise<Work[]> {
-  //   return await safeRequest(
-  //     () =>
-  //       AXIOS_BOOKS.get(`/subjects/${encodeURIComponent(subject)}.json`, {
-  //         params: { limit, offset, ebooks: true },
-  //         timeout: 2000
-  //       }),
-  //     []
-  //   ).then(data => data.works || [])
-  // }
 }

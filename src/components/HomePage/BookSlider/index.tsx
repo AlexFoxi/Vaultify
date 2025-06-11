@@ -3,15 +3,15 @@
 import { useEffect, useState } from 'react'
 import { SwiperSlide } from 'swiper/react'
 
-import HomeSlider from '@/components/SliderSkeleton/HomeSlider'
+import HomeSlider from '../HomeSlider'
 
 import BookCard from './BookCard'
 import localData from './data.json'
 import styles from './styles.module.scss'
-import { Work } from '@/types/books'
+import { Book } from '@/types/books'
 
 const BookSlider = () => {
-  const [books, setBooks] = useState<Work[]>([])
+  const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

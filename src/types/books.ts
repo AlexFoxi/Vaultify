@@ -1,9 +1,11 @@
+export type BookPreview = Pick<Book, 'key' | 'title' | 'cover_id'>
+
 export interface Author {
   key: string
   name: string
 }
 
-export interface Work {
+export interface Book {
   key: string
   title: string
   authors: Author[]
@@ -18,5 +20,5 @@ export interface SubjectResponse {
   name: string
   subject_type: string
   work_count: number
-  works: Work[]
+  works: Book[]
 }

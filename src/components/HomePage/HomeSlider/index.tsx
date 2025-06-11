@@ -1,8 +1,9 @@
-import SliderSkeleton from '..'
 import { ReactNode } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
+
+import SliderSkeleton from '@/components/SliderSkeleton'
 
 import useSliderMediaQuery from '@/hooks/SliderMediaQuery'
 
@@ -29,7 +30,7 @@ const breakpoints: brProps = {
 const pagination = {
   clickable: true,
   renderBullet: (index: number, className: string) => {
-    return `<span class="${className}">${index + 1}</span>`
+    return `<span class="${className}"></span>`
   }
 }
 
@@ -45,7 +46,6 @@ const HomeSlider: React.FC<Props> = ({ loading, children }) => {
         pagination={pagination}
         navigation
         breakpoints={breakpoints}
-        className={styles.books}
       >
         {children}
       </Swiper>

@@ -1,10 +1,10 @@
 import { AXIOS_BOOKS } from '@/api/api'
 import { safeRequest } from '@/api/api.helper'
 
-import { Work } from '@/types/books'
+import { Book } from '@/types/books'
 
 export const BookService = {
-  async searchPerPage(query: string, page = 1): Promise<Work[]> {
+  async searchPerPage(query: string, page = 1): Promise<Book[]> {
     return await safeRequest(
       () =>
         AXIOS_BOOKS.get('/search.json', {
@@ -18,7 +18,7 @@ export const BookService = {
     subject: string,
     limit = 10,
     offset = 0
-  ): Promise<Work[]> {
+  ): Promise<Book[]> {
     return await safeRequest(
       () =>
         AXIOS_BOOKS.get(`/subjects/${encodeURIComponent(subject)}.json`, {

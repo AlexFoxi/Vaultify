@@ -13,26 +13,8 @@
   margin-bottom: $XS;
 }
 
-.about {
-}
-
 .title {
   font-size: $TextXS;
   color: $gray;
   margin-bottom: $XS4;
-}
-
-.author {
-  font-size: $TextXS;
-  font-weight: 600;
-
-  span {
-    font-weight: 400;
-    margin-right: $XS4;
-    font-size: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 }

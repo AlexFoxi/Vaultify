@@ -1,6 +1,4 @@
-import { Link } from 'i18n/navigation'
-
-import CustomImage from '@/components/ui/Image'
+import HomeSlide from '../../HomeSlider/HomeSlide'
 
 import styles from './styles.module.scss'
 import { Movie } from '@/types/movies'
@@ -14,23 +12,12 @@ const MoviesCard: React.FC<BookCardProps> = ({ movie }) => {
   const posterUrl = `https://image.tmdb.org/t/p/w342${movie.poster_path}` // w92, w154, w185, w342, w500, w780, original
 
   return (
-    <>
-      <Link href={movieUrl} className={styles.image}>
-        {movie.poster_path && (
-          <CustomImage
-            src={posterUrl}
-            width={148}
-            height={210}
-            alt={movie.title}
-          />
-        )}
-      </Link>
-      <div className={styles.about}>
-        <Link href={movieUrl}>
-          <h2 className={styles.title}>{movie.title || 'No title'}</h2>
-        </Link>
-      </div>
-    </>
+    <HomeSlide
+      slideUrl={movieUrl}
+      image={{ url: posterUrl, title: movie.title }}
+    >
+      <h2 className={styles.title}>{movie.title || 'No title'}</h2>
+    </HomeSlide>
   )
 }
 

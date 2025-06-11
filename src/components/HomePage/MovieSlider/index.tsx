@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { SwiperSlide } from 'swiper/react'
 
-import HomeSlider from '@/components/SliderSkeleton/HomeSlider'
+import HomeSlider from '../HomeSlider'
 
 import MoviesCard from './MoviesCard'
 import localData from './data.json'
@@ -18,7 +18,6 @@ const MovieSlider = () => {
     const fetchMovies = async () => {
       // const data = await MoviesService.getPerPage('movie', 1, 'uk-UA')
       const data = localData
-      console.log(data.results, 'results')
 
       setMovies(data.results)
       setLoading(false)

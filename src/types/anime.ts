@@ -1,3 +1,5 @@
+export type AnimePreview = Pick<Anime, 'mal_id' | 'images' | 'title'>
+
 export interface AnimeResponse {
   pagination: {
     last_visible_page: number

@@ -1,12 +1,10 @@
-import { Link } from 'i18n/navigation'
-
-import CustomImage from '@/components/ui/Image'
+import HomeSlide from '@/components/HomePage/HomeSlider/HomeSlide'
 
 import styles from './styles.module.scss'
-import { Anime } from '@/types/anime'
+import { AnimePreview } from '@/types/anime'
 
 type BookCardProps = {
-  anime: Anime
+  anime: AnimePreview
 }
 
 const AnimeCard: React.FC<BookCardProps> = ({ anime }) => {
@@ -16,21 +14,12 @@ const AnimeCard: React.FC<BookCardProps> = ({ anime }) => {
 
   return (
     <>
-      <Link href={animeUrl} className={styles.image}>
-        {anime.images && (
-          <CustomImage
-            src={animeImage}
-            width={148}
-            height={210}
-            alt={anime.title}
-          />
-        )}
-      </Link>
-      <div className={styles.about}>
-        <Link href={animeUrl}>
-          <h2 className={styles.title}>{anime.title || 'No title'}</h2>
-        </Link>
-      </div>
+      <HomeSlide
+        slideUrl={animeUrl}
+        image={{ url: animeImage, title: anime.title }}
+      >
+        <h2 className={styles.title}>{anime.title || 'No title'}</h2>
+      </HomeSlide>
     </>
   )
 }

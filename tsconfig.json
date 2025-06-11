@@ -28,7 +28,7 @@
       "@/components/*": ["src/components/*"],
       "@/services/*": ["src/services/*"],
       "@/api/*": ["src/api/*"],
-      "@/styles/": ["styles/*"],
+      "@/styles/*": ["styles/*"],
       "@/assets/*": ["assets/*"],
       "@/layouts/*": ["src/layouts/*"],
       "@/screens/*": ["src/screens/*"],

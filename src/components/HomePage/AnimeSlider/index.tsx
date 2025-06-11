@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { SwiperSlide } from 'swiper/react'
 
-import HomeSlider from '@/components/SliderSkeleton/HomeSlider'
+import HomeSlider from '../HomeSlider'
 
 import AnimeCard from './AnimeCard'
 import localData from './data.json'
