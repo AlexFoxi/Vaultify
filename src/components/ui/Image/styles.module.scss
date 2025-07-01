@@ -6,36 +6,8 @@
   height: 100%;
 }
 
-.skeleton {
-  position: absolute;
-  inset: 0;
-  aspect-ratio: 2/2.85;
-  background: #5e5e5e;
-  border-radius: $XS8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-
-  > div {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    animation: pulse 1.5s infinite ease-in-out;
-  }
-
-  &.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
-
 .image {
   width: 100%;
-  // height: 100%;
   object-fit: fill;
   border-radius: $XS8;
   opacity: 0;
@@ -46,14 +18,27 @@
   }
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.7;
+.skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: $XS8;
+
+  --background: hsl(222deg 47% 11%);
+  --block: hsl(215deg 25% 27%);
+  --loader: hsl(0 0% 100% / 10%);
+
+  background:
+    linear-gradient(-75deg, transparent 40%, var(--loader), transparent 60%) 0
+      0 / 200% 100%,
+    var(--block);
+  border-radius: calc(1rem * 0.5);
+  animation: load 2s infinite linear;
+  background-attachment: fixed;
+  opacity: .5;
+}
+
+@keyframes load {
+  to {
+    background-position: 200% 0;
   }
 }

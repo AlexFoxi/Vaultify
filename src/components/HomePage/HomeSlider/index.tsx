@@ -7,8 +7,6 @@ import SliderSkeleton from '@/components/SliderSkeleton'
 
 import useSliderMediaQuery from '@/hooks/SliderMediaQuery'
 
-import styles from './styles.module.scss'
-
 interface Props {
   loading: boolean
   children: ReactNode
@@ -29,7 +27,7 @@ const breakpoints: brProps = {
 
 const pagination = {
   clickable: true,
-  renderBullet: (index: number, className: string) => {
+  renderBullet: (i: number, className: string) => {
     return `<span class="${className}"></span>`
   }
 }
@@ -40,11 +38,10 @@ const HomeSlider: React.FC<Props> = ({ loading, children }) => {
   return (
     <SliderSkeleton loading={loading} gap={16} items={perView}>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Pagination]}
         spaceBetween={16}
         slidesPerView={perView}
         pagination={pagination}
-        navigation
         breakpoints={breakpoints}
       >
         {children}

@@ -3,7 +3,7 @@
 import cn from 'clsx'
 import { Link, usePathname } from 'i18n/navigation'
 import { useLocale } from 'next-intl'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import { useCallback } from 'react'
 
 import LangSwitcher from './LangSwitcher'
@@ -12,12 +12,10 @@ import Search from './Search'
 import Theme from './Theme'
 import User from './User'
 import styles from './styles.module.scss'
-import { projectInfo } from '@/helpers/projectInfo'
 
 const Header = () => {
   const pathname = usePathname()
   const locale = useLocale()
-  const logo = projectInfo.logo
 
   const handleLogoClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -35,14 +33,14 @@ const Header = () => {
           <Link
             href={'/'}
             onClick={handleLogoClick}
-            title='Vault Logo'
+            title='Vaultify Logo'
             locale={locale}
           >
-            <Image
-              src={logo.path}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
+            <NextImage
+              src='/logo.svg'
+              alt='Vaultify Logo'
+              width={60}
+              height={40}
             />
           </Link>
         </div>

@@ -6,7 +6,12 @@ import React, { useEffect, useState } from 'react'
 
 import styles from './styles.module.scss'
 
-const CustomImage: React.FC<ImageProps> = ({ className, ...rest }) => {
+const CustomImage: React.FC<ImageProps> = ({
+  className,
+  width,
+  height,
+  ...rest
+}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [showSkeleton, setShowSkeleton] = useState(true)
 
@@ -20,11 +25,11 @@ const CustomImage: React.FC<ImageProps> = ({ className, ...rest }) => {
   return (
     <div className={cn(styles.imgWrapper)}>
       {showSkeleton && (
-        <div className={cn(styles.skeleton, !isLoading && styles.hidden)}>
-          <div />
-        </div>
+        <div style={{ width, height }} className={styles.skeleton} />
       )}
       <NextImage
+        width={width}
+        height={height}
         {...rest}
         className={cn(className, styles.image, !isLoading && styles.loaded)}
         onLoad={() => setIsLoading(false)}
