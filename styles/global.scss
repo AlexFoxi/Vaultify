@@ -54,6 +54,9 @@ body {
     padding: 0 $XS;
   }
 }
+main {
+  z-index: 1;
+}
 
 p,
 span {

@@ -5,9 +5,11 @@
   padding: $XS 0;
   height: auto;
   position: fixed;
+  background: var(--main);
   top: 0;
   left: 0;
   box-shadow: 0px 0px 10px color-mix(in srgb, var(--secondary), transparent 70%);
+  z-index: 10;
 }
 
 .navBar {

@@ -1,9 +1,14 @@
 @use './styles/vars' as *;
 
+.home {
+  margin: $S 0;
+}
+
 .block {
   width: 100%;
 }
 
 .title {
+  font-size: $TextL;
   margin-bottom: $S;
 }
